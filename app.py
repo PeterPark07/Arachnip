@@ -7,7 +7,8 @@ def index():
     # Get the user's IP address from the request object
     ip_address = request.headers.get('X-Forwarded-For', request.remote_addr)
 
-    return f"IP Address logged successfully.{ip_address}"
+    return f"IP Address logged successfully. {ip_address}"
 
 if __name__ == '__main__':
+    # Run the app using Gunicorn
     app.run(debug=True)
