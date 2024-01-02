@@ -47,7 +47,7 @@ def log_ip():
     if ip_address:
         # Log the IP address to the list
         logged_ips.append(ip_address)
-        return jsonify({'message': 'IP Address logged successfully.'}), 200
+        return jsonify({'message': 'Hello There.'}), 200
     else:
         return jsonify({'error': 'Invalid request.'}), 400
 
