@@ -10,7 +10,7 @@ def index():
     return """
     <html>
     <head>
-        <title>Static Webpage with IP</title>
+        <title>Static Webpage</title>
         <script>
             function logIP() {
                 fetch('https://api64.ipify.org?format=json')  // You can use any IP lookup service
@@ -35,6 +35,10 @@ def index():
     <body>
         <h1>This is a Static Webpage</h1>
         <p>Some text here...</p>
+
+        <!-- Replace 'your-gif-filename.gif' with the actual filename of your GIF -->
+        <img src="https://cdn.pixabay.com/animation/2023/12/22/00/19/00-19-58-407_512.gif" alt="Nice to meet you">
+
     </body>
     </html>
     """
