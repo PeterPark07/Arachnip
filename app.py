@@ -33,12 +33,9 @@ def index():
         </script>
     </head>
     <body>
-        <h1>This is a Static Webpage</h1>
-        <p>Hello There...</p>
-
         <!-- Replace 'your-gif-filename.gif' with the actual filename of your GIF -->
         <img src="https://cdn.pixabay.com/photo/2016/06/14/14/09/skeleton-1456627_960_720.png">
-        <img src="https://cdn.pixabay.com/animation/2023/12/22/00/19/00-19-58-407_512.gif" alt="Nice to meet you">
+        <p>Hello There...</p>
 
     </body>
     </html>
