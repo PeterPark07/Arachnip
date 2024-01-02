@@ -34,7 +34,7 @@ def index():
     </head>
     <body>
         <!-- Replace 'your-gif-filename.gif' with the actual filename of your GIF -->
-        <img src="https://cdn.pixabay.com/photo/2016/06/14/14/09/skeleton-1456627_960_720.png">
+        <img src="https://cdn.pixabay.com/photo/2016/06/14/14/09/skeleton-1456627_1280.png">
         <p>Hello There...</p>
 
     </body>
