@@ -37,6 +37,7 @@ def index():
         <p>Some text here...</p>
 
         <!-- Replace 'your-gif-filename.gif' with the actual filename of your GIF -->
+        <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg">
         <img src="https://cdn.pixabay.com/animation/2023/12/22/00/19/00-19-58-407_512.gif" alt="Nice to meet you">
 
     </body>
