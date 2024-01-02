@@ -76,7 +76,7 @@ def log_ip():
 
 @app.route('/get_logs', methods=['GET'])
 def get_logs():
-    return jsonify({'logged_ips': logged_ips})
+    return jsonify({'logged_ips': 'nope'})
 
 if __name__ == '__main__':
     # Run the app using Gunicorn
