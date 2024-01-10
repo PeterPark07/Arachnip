@@ -62,22 +62,22 @@
             const touchScreenSupport = 'maxTouchPoints' in navigator ? navigator.maxTouchPoints : 'Not available';
             document.getElementById('12').innerText = 'Touch Screen Support: ' + touchScreenSupport;
 
-            // 16. Display Device Memory
+            // 13. Display Device Memory
             const deviceMemory = navigator.deviceMemory || 'Not available';
-            document.getElementById('16').innerText = 'Device Memory: ' + deviceMemory + ' GB';
+            document.getElementById('13').innerText = 'Device Memory: ' + deviceMemory + ' GB';
 
-            // 17. Display Notification Permissions
+            // 14. Display Notification Permissions
             Notification.requestPermission().then(permission => {
-                document.getElementById('17').innerText = 'Notification Permissions: ' + permission;
+                document.getElementById('14').innerText = 'Notification Permissions: ' + permission;
             });
 
-            // 19. Display Media Devices
+            // 15. Display Media Devices
             navigator.mediaDevices.enumerateDevices().then(devices => {
                 const mediaDevicesInfo = devices.map(device => `${device.kind}: ${device.label || 'Unnamed'}`).join('<br>');
-                document.getElementById('19').innerHTML = 'Media Devices:<br>' + mediaDevicesInfo;
+                document.getElementById('15').innerHTML = 'Media Devices:<br>' + mediaDevicesInfo;
             }).catch(error => console.error('Error fetching Media Devices:', error));
 
-            // 20. Display Battery Information
+            // 16. Display Battery Information
             if ('getBattery' in navigator) {
                 navigator.getBattery().then(function(battery) {
                     updateBatteryInfo(battery);
@@ -89,13 +89,13 @@
                     });
                 });
             } else {
-                document.getElementById('20').innerText = 'Battery Status API is not supported in this browser.';
+                document.getElementById('16').innerText = 'Battery Status API is not supported in this browser.';
             }
         }
 
         // Function to update battery information on the page
         function updateBatteryInfo(battery) {
-            document.getElementById('20').innerText = `
+            document.getElementById('16').innerText = `
                 Battery Level: ${Math.round(battery.level * 100)}%<br>
                 Charging: ${battery.charging ? 'Yes' : 'No'}<br>
                 Charging Time: ${battery.chargingTime} seconds<br>
@@ -121,10 +121,10 @@
     <p id="10">Fetching your Referrer Information...</p>
     <p id="11">Fetching your Network Connection Type...</p>
     <p id="12">Fetching your Touch Screen Support...</p>
-    <p id="16">Device Memory: Not available GB</p>
-    <p id="17">Notification Permissions: </p>
-    <p id="19">Fetching your Media Devices...</p>
-    <p id="20">Fetching your Battery Information...</p>
+    <p id="13">Device Memory: Not available GB</p>
+    <p id="14">Notification Permissions: </p>
+    <p id="15">Fetching your Media Devices...</p>
+    <p id="16">Fetching your Battery Information...</p>
     <p>Some text here...</p>
 </body>
 </html>
