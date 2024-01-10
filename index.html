@@ -64,15 +64,6 @@
             const touchScreenSupport = 'maxTouchPoints' in navigator ? navigator.maxTouchPoints : 'Not available';
             document.getElementById('12').innerText = 'Touch Screen Support: ' + touchScreenSupport;
 
-            // 13. Display Mouse and Keyboard Input
-            document.addEventListener('mousemove', function(event) {
-                document.getElementById('13').innerText = `Mouse Coordinates: (${event.clientX}, ${event.clientY})`;
-            });
-
-            document.addEventListener('keydown', function(event) {
-                document.getElementById('14').innerText = `Key Pressed: ${event.key}`;
-            });
-
             // 15. Display Screen Brightness (Not widely supported)
             const screenBrightness = window.screen.brightness || 'Not supported';
             document.getElementById('15').innerText = 'Screen Brightness: ' + screenBrightness;
@@ -140,8 +131,6 @@
     <p id="10">Fetching your Referrer Information...</p>
     <p id="11">Fetching your Network Connection Type...</p>
     <p id="12">Fetching your Touch Screen Support...</p>
-    <p id="13">Mouse Coordinates: (0, 0)</p>
-    <p id="14">Key Pressed: </p>
     <p id="15">Screen Brightness: Not supported</p>
     <p id="16">Device Memory: Not available GB</p>
     <p id="17">Notification Permissions: </p>
