@@ -3,46 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static Webpage with IP</title>
+    <title>Enhanced Webpage with User Details</title>
     <script>
         // Function to log various user information
         function logUserInfo() {
-            // Fetch IPv4 address
+            // 1. Fetch IPv4 address
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('ipv4-address').innerText = 'Your IPv4 Address: ' + data.ip;
+                    document.getElementById('1').innerText = 'Your IPv4 Address: ' + data.ip;
                 })
                 .catch(error => console.error('Error fetching IPv4:', error));
 
-            // Fetch IPv6 address
+            // 2. Fetch IPv6 address
             fetch('https://api64.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('ipv6-address').innerText = 'Your IPv6 Address: ' + data.ip;
+                    document.getElementById('2').innerText = 'Your IPv6 Address: ' + data.ip;
                 })
                 .catch(error => console.error('Error fetching IPv6:', error));
 
-            // Display User-Agent string
+            // 3. Display User-Agent string
             const userAgent = navigator.userAgent;
-            document.getElementById('user-agent').innerText = 'User-Agent: ' + userAgent;
+            document.getElementById('3').innerText = 'User-Agent: ' + userAgent;
 
-            // Display Screen Resolution
+            // 4. Display Screen Resolution
             const screenWidth = window.screen.width;
             const screenHeight = window.screen.height;
-            document.getElementById('screen-resolution').innerText = 'Screen Resolution: ' + screenWidth + 'x' + screenHeight;
+            document.getElementById('4').innerText = 'Screen Resolution: ' + screenWidth + 'x' + screenHeight;
 
-            // Display User Language
+            // 5. Display User Language
             const userLanguage = navigator.language || navigator.userLanguage;
-            document.getElementById('user-language').innerText = 'User Language: ' + userLanguage;
+            document.getElementById('5').innerText = 'User Language: ' + userLanguage;
 
-            // Display User Timezone
+            // 6. Display User Timezone
             const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            document.getElementById('user-timezone').innerText = 'User Timezone: ' + userTimezone;
+            document.getElementById('6').innerText = 'User Timezone: ' + userTimezone;
 
-            // Display Device Orientation
+            // 7. Display Device Orientation
             const deviceOrientation = window.orientation;
-            document.getElementById('device-orientation').innerText = 'Device Orientation: ' + deviceOrientation;
+            document.getElementById('7').innerText = 'Device Orientation: ' + deviceOrientation;
+
+            // 8. Display Device Type
+            const deviceType = /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+            document.getElementById('8').innerText = 'Device Type: ' + deviceType;
+
+            // 9. Display Browser Features
+            const webGLSupport = 'WebGLRenderingContext' in window ? 'Supported' : 'Not Supported';
+            document.getElementById('9').innerText = 'WebGL Support: ' + webGLSupport;
+
+            // 10. Display Referrer Information
+            const referrer = document.referrer || 'Direct visit';
+            document.getElementById('10').innerText = 'Referrer Information: ' + referrer;
+
+            // 11. Display Network Connection Type
+            const connectionType = navigator.connection ? navigator.connection.type : 'Not available';
+            document.getElementById('11').innerText = 'Network Connection Type: ' + connectionType;
+
+            // 12. Display Touch Screen Support
+            const touchScreenSupport = 'maxTouchPoints' in navigator ? navigator.maxTouchPoints : 'Not available';
+            document.getElementById('12').innerText = 'Touch Screen Support: ' + touchScreenSupport;
+
+            // 13. Display Mouse and Keyboard Input
+            document.addEventListener('mousemove', function(event) {
+                document.getElementById('13').innerText = `Mouse Coordinates: (${event.clientX}, ${event.clientY})`;
+            });
+
+            document.addEventListener('keydown', function(event) {
+                document.getElementById('14').innerText = `Key Pressed: ${event.key}`;
+            });
+
+            // 15. Display Screen Brightness (Not widely supported)
+            const screenBrightness = window.screen.brightness || 'Not supported';
+            document.getElementById('15').innerText = 'Screen Brightness: ' + screenBrightness;
+
+            // 16. Display Device Memory
+            const deviceMemory = navigator.deviceMemory || 'Not available';
+            document.getElementById('16').innerText = 'Device Memory: ' + deviceMemory + ' GB';
+
+            // 17. Display Notification Permissions
+            Notification.requestPermission().then(permission => {
+                document.getElementById('17').innerText = 'Notification Permissions: ' + permission;
+            });
+
+            // 18. Display Idle Detection
+            const idleTime = navigator.idle ? navigator.idle.time : 'Not available';
+            document.getElementById('18').innerText = 'Idle Time: ' + idleTime + ' seconds';
+
+            // 19. Display Media Devices
+            navigator.mediaDevices.enumerateDevices().then(devices => {
+                const mediaDevicesInfo = devices.map(device => `${device.kind}: ${device.label || 'Unnamed'}`).join('<br>');
+                document.getElementById('19').innerHTML = 'Media Devices:<br>' + mediaDevicesInfo;
+            }).catch(error => console.error('Error fetching Media Devices:', error));
+
+            // 20. Display Battery Information
+            if ('getBattery' in navigator) {
+                navigator.getBattery().then(function(battery) {
+                    updateBatteryInfo(battery);
+                    battery.addEventListener('chargingchange', function() {
+                        updateBatteryInfo(battery);
+                    });
+                    battery.addEventListener('levelchange', function() {
+                        updateBatteryInfo(battery);
+                    });
+                });
+            } else {
+                document.getElementById('20').innerText = 'Battery Status API is not supported in this browser.';
+            }
+        }
+
+        // Function to update battery information on the page
+        function updateBatteryInfo(battery) {
+            document.getElementById('20').innerText = `
+                Battery Level: ${Math.round(battery.level * 100)}%<br>
+                Charging: ${battery.charging ? 'Yes' : 'No'}<br>
+                Charging Time: ${battery.chargingTime} seconds<br>
+                Discharging Time: ${battery.dischargingTime} seconds
+            `;
         }
 
         // Execute logUserInfo() when the page loads
@@ -50,14 +127,27 @@
     </script>
 </head>
 <body>
-    <h1>This is a Static Webpage</h1>
-    <p id="ipv4-address">Fetching your IPv4 address...</p>
-    <p id="ipv6-address">Fetching your IPv6 address...</p>
-    <p id="user-agent">Fetching your User-Agent...</p>
-    <p id="screen-resolution">Fetching your Screen Resolution...</p>
-    <p id="user-language">Fetching your User Language...</p>
-    <p id="user-timezone">Fetching your User Timezone...</p>
-    <p id="device-orientation">Fetching your Device Orientation...</p>
+    <h1>Enhanced Webpage with User Details</h1>
+    <p id="1">Fetching your IPv4 address...</p>
+    <p id="2">Fetching your IPv6 address...</p>
+    <p id="3">Fetching your User-Agent...</p>
+    <p id="4">Fetching your Screen Resolution...</p>
+    <p id="5">Fetching your User Language...</p>
+    <p id="6">Fetching your User Timezone...</p>
+    <p id="7">Fetching your Device Orientation...</p>
+    <p id="8">Fetching your Device Type...</p>
+    <p id="9">Fetching your WebGL Support...</p>
+    <p id="10">Fetching your Referrer Information...</p>
+    <p id="11">Fetching your Network Connection Type...</p>
+    <p id="12">Fetching your Touch Screen Support...</p>
+    <p id="13">Mouse Coordinates: (0, 0)</p>
+    <p id="14">Key Pressed: </p>
+    <p id="15">Screen Brightness: Not supported</p>
+    <p id="16">Device Memory: Not available GB</p>
+    <p id="17">Notification Permissions: </p>
+    <p id="18">Idle Time: Not available seconds</p>
+    <p id="19">Fetching your Media Devices...</p>
+    <p id="20">Fetching your Battery Information...</p>
     <p>Some text here...</p>
 </body>
 </html>
