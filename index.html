@@ -91,6 +91,10 @@
             } else {
                 document.getElementById('16').innerText = 'Battery Status API is not supported in this browser.';
             }
+
+            // 17. Display Hardware Concurrency
+            const hardwareConcurrency = navigator.hardwareConcurrency || 'Not available';
+            document.getElementById('17').innerText = 'Hardware Concurrency: ' + hardwareConcurrency;
         }
 
         // Function to update battery information on the page
@@ -125,6 +129,7 @@
     <p id="14">Notification Permissions: </p>
     <p id="15">Fetching your Media Devices...</p>
     <p id="16">Fetching your Battery Information...</p>
+    <p id="17">Fetching your Hardware Concurrency...</p>
     <p>Some text here...</p>
 </body>
 </html>
