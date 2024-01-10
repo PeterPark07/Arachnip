@@ -12,16 +12,14 @@
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('1').innerText = 'Your IPv4 Address: ' + data.ip;
-                })
-                .catch(error => console.error('Error fetching IPv4:', error));
+                });
 
             // 2. Fetch IPv6 address
             fetch('https://api64.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('2').innerText = 'Your IPv6 Address: ' + data.ip;
-                })
-                .catch(error => console.error('Error fetching IPv6:', error));
+                });
 
             // 3. Display User-Agent string
             const userAgent = navigator.userAgent;
