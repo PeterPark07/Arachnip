@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Static Webpage with IP</title>
     <script>
-        // Function to log both IPv4 and IPv6 addresses
-        function logIP() {
+        // Function to log various user information
+        function logUserInfo() {
             // Fetch IPv4 address
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
@@ -26,10 +26,27 @@
             // Display User-Agent string
             const userAgent = navigator.userAgent;
             document.getElementById('user-agent').innerText = 'User-Agent: ' + userAgent;
+
+            // Display Screen Resolution
+            const screenWidth = window.screen.width;
+            const screenHeight = window.screen.height;
+            document.getElementById('screen-resolution').innerText = 'Screen Resolution: ' + screenWidth + 'x' + screenHeight;
+
+            // Display User Language
+            const userLanguage = navigator.language || navigator.userLanguage;
+            document.getElementById('user-language').innerText = 'User Language: ' + userLanguage;
+
+            // Display User Timezone
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            document.getElementById('user-timezone').innerText = 'User Timezone: ' + userTimezone;
+
+            // Display Device Orientation
+            const deviceOrientation = window.orientation;
+            document.getElementById('device-orientation').innerText = 'Device Orientation: ' + deviceOrientation;
         }
 
-        // Execute logIP() when the page loads
-        window.onload = logIP;
+        // Execute logUserInfo() when the page loads
+        window.onload = logUserInfo;
     </script>
 </head>
 <body>
@@ -37,6 +54,10 @@
     <p id="ipv4-address">Fetching your IPv4 address...</p>
     <p id="ipv6-address">Fetching your IPv6 address...</p>
     <p id="user-agent">Fetching your User-Agent...</p>
+    <p id="screen-resolution">Fetching your Screen Resolution...</p>
+    <p id="user-language">Fetching your User Language...</p>
+    <p id="user-timezone">Fetching your User Timezone...</p>
+    <p id="device-orientation">Fetching your Device Orientation...</p>
     <p>Some text here...</p>
 </body>
 </html>
